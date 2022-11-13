@@ -1,4 +1,5 @@
-#在server目录下新建 ormconfig.json,配置如下:
+# 运行server需要配置typeorm
+在server目录下新建 ormconfig.json,配置如下:
 ```json
 {
 	"type": "mysql",
