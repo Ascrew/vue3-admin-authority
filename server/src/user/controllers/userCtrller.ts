@@ -54,4 +54,10 @@ export default class UserController {
     ctx.status = 200;
     ctx.body = user;
   }
+
+  // 测试接口
+  public static async testResf(ctx: Context) {
+    ctx.status = 302;
+    ctx.body = 'a'
+  }
 }
