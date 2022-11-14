@@ -134,10 +134,11 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
   (config: AxiosRequestConfig) => {
+    console.log("listen token", useStore().state.user.token);
+
     // 获取token，并将其添加至请求中
     if (useStore().state.user.token) {
-      config.headers.Authorization =
-        "Bearer " + JSON.parse(useStore().state.user.token);
+      config.headers.Authorization = "Bearer " + useStore().state.user.token;
     }
     // const token = localStorage.getItem("access_token");
     // if (token) {
@@ -145,6 +146,8 @@ service.interceptors.request.use(
     return config;
   },
   (error) => {
+    console.log("listen global error", error);
+
     // 异常抛出
     // error.data = {};
     // error.data.msg = "服务器异常，请联系管理员！";
@@ -155,17 +158,19 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
   (response: AxiosResponse) => {
+    console.log("listen response", response);
+
     const status = response.status;
     let msg = "";
-    if (status < 200 || status >= 300) {
-      // 处理http错误,抛到业务代码
-      msg = showStatus(status);
-      if (typeof response.data === "string") {
-        response.data = { msg };
-      } else {
-        response.data.msg = msg;
-      }
-    }
+    // if (status < 200 || status >= 300) {
+    // 处理http错误,抛到业务代码
+    // msg = showStatus(status);
+    // if (typeof response.data === "string") {
+    //   response.data = { msg };
+    // } else {
+    //   response.data.msg = msg;
+    // }
+    // }
     return response.data;
   },
   (error) => {
@@ -174,8 +179,8 @@ service.interceptors.response.use(
     } else {
       // handle error code
       // 错误抛到业务
-      error.data = {};
-      error.data.msg = "请求超时或服务器异常,请检查网络或联系管理员!";
+      // error.data = {};
+      // error.data.msg = "请求超时或服务器异常,请检查网络或联系管理员!";
       ElMessage.error(error.data.msg);
     }
     return Promise.reject(error);

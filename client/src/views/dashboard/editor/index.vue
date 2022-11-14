@@ -27,6 +27,8 @@
     <div>
       <img :src="emptyGif" class="emptyGif" />
     </div>
+
+    <el-button @click="testResf">kick</el-button>
   </div>
 </template>
 
@@ -35,6 +37,7 @@ import { computed, ref } from "vue";
 import PanThumb from "@/components/PanThumb/index.vue";
 import GithubCorner from "@/components/GithubCorner/index.vue";
 import { useStore } from "vuex";
+import { testResfApi } from "@/api/admin/adminUser";
 
 const store = useStore();
 
@@ -51,6 +54,11 @@ const avatar = computed(() => {
 const roles = computed(() => {
   return store.state.user.roles;
 });
+
+const testResf = async () => {
+  let res = await testResfApi();
+  console.log("listen res in page", res);
+};
 </script>
 <style lang="scss" scoped>
 .emptyGif {

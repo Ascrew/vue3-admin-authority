@@ -37,3 +37,11 @@ export function registerApi(params: {
     data: params,
   });
 }
+
+export function testResfApi(params: { test: "aa" }): Promise<axiosRes> {
+  return request({
+    method: "POST",
+    url: `${devUrl}/testResf`,
+    data: params,
+  });
+}

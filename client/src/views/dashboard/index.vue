@@ -12,20 +12,20 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, computed } from "vue";
+import { onMounted, ref, computed, shallowRef } from "vue";
 import { useStore } from "vuex";
 import AdminDashboard from "./admin/index.vue";
 import EditorDashboard from "./editor/index.vue";
 
 const store = useStore();
-const currentRole = ref("admin-dashboard");
+const currentRole = shallowRef(AdminDashboard);
 const roles = computed(() => {
   return store.state.user.roles;
 });
 
 onMounted(() => {
   if (!roles.value.includes("admin")) {
-    currentRole.value = "editor-dashboard";
+    currentRole.value = EditorDashboard;
   }
 });
 </script>

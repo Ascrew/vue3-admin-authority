@@ -32,14 +32,14 @@ import {
 } from "vue";
 import { useStore } from "vuex";
 
-const props = withDefaults(
-  defineProps<{
-    buttonTop: number;
-  }>(),
-  {
-    buttonTop: 250,
-  }
-);
+// const props = withDefaults(
+//   defineProps<{
+//     buttonTop: number;
+//   }>(),
+//   {
+//     buttonTop: 250,
+//   }
+// );
 
 const store = useStore();
 const rightPanelRef = ref<Element>(null);
