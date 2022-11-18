@@ -38,6 +38,7 @@ import PanThumb from "@/components/PanThumb/index.vue";
 import GithubCorner from "@/components/GithubCorner/index.vue";
 import { useStore } from "vuex";
 import { testResfApi } from "@/api/admin/adminUser";
+import { HttpStatusCodeEnum } from "@/model";
 
 const store = useStore();
 
@@ -56,8 +57,10 @@ const roles = computed(() => {
 });
 
 const testResf = async () => {
-  let res = await testResfApi();
-  console.log("listen res in page", res);
+  let res = await testResfApi({ test: "aa" });
+  if (res.code === HttpStatusCodeEnum.SUCCESS) {
+    console.log("listen res in page", res);
+  }
 };
 </script>
 <style lang="scss" scoped>

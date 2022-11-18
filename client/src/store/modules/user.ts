@@ -15,7 +15,7 @@ import {
 } from "vuex";
 import store, { RootState } from "../index";
 import { getToken, setToken, removeToken } from "@/utils/cookies";
-import { axiosRes } from "@/entities/resInterface";
+import { AxiosRes } from "@/model";
 import { getUserInfo, logout } from "@/api/user";
 import router, { resetRouter } from "@/router";
 
@@ -105,7 +105,7 @@ export default {
   actions: {
     async Login(
       { commit }: AugmentedActionContext,
-      res: axiosRes
+      res: AxiosRes
     ): Promise<void> {
       setToken(res.data.token);
       commit("SET_TOKEN", res.data.token);

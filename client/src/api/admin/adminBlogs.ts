@@ -1,5 +1,5 @@
 import request from "@/utils/request";
-import { axiosRes } from "@/entities/resInterface";
+import { axiosRes } from "@/model";
 
 const devUrl = "/api";
 // const devUrl = ''

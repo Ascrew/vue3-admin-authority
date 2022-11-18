@@ -1,9 +1,9 @@
 import request from "@/utils/request";
-import type { axiosRes } from "@/entities/resInterface";
+import type { AxiosRes } from "@/model";
 
 const devUrl = "/api";
 
-export function getUserInfo(params: null | undefined): Promise<axiosRes> {
+export function getUserInfo(params: null | undefined): Promise<AxiosRes> {
   return request({
     method: "POST",
     url: `${devUrl}/user/userInfo`,
@@ -11,7 +11,7 @@ export function getUserInfo(params: null | undefined): Promise<axiosRes> {
   });
 }
 
-export function logout(params: null | undefined): Promise<axiosRes> {
+export function logout(params: null | undefined): Promise<AxiosRes> {
   return request({
     method: "POST",
     url: `${devUrl}/user/logout`,

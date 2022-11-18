@@ -21,15 +21,15 @@ createConnection()
     app.use(bodyParser())
 
     // 错误处理中间件
-    app.use(async (ctx, next) => {
-      try {
-        await next()
-      } catch (err) {
-        console.log('middware was wrong in server.ts')
-        ctx.status = err.status || 500
-        ctx.body = { message: err.message }
-      }
-    })
+    // app.use(async (ctx, next) => {
+    //   try {
+    //     await next()
+    //   } catch (err) {
+    //     console.log('middware was wrong in server.ts')
+    //     ctx.status = err.status || 500
+    //     ctx.body = { message: err.message }
+    //   }
+    // })
 
     // 响应用户请求 无需jwt
     app.use(unprotectedRouter.routes()).use(unprotectedRouter.allowedMethods())

@@ -15,7 +15,7 @@ import {
 } from "vuex";
 import store, { RootState } from "../index";
 import { getToken, setToken, removeToken } from "@/utils/cookies";
-import { axiosRes } from "@/entities/resInterface";
+import { AxiosRes } from "@/model";
 import { getUserInfo } from "@/api/user";
 import router, { resetRouter } from "@/router";
 import { RouteLocationNormalized } from "vue-router";

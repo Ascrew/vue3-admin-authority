@@ -1,12 +1,12 @@
 import request from "@/utils/request";
-import type { axiosRes } from "@/entities/resInterface";
+import type { AxiosRes } from "@/model";
 
 const devUrl = "/api";
 
 export function getUserListApi(
   params: unknown,
   url: string
-): Promise<axiosRes> {
+): Promise<AxiosRes> {
   return request({
     method: "POST",
     url: `${devUrl}` + url,
@@ -17,7 +17,7 @@ export function getUserListApi(
 export function loginApi(params: {
   username: string;
   password: string;
-}): Promise<axiosRes> {
+}): Promise<AxiosRes> {
   return request({
     method: "POST",
     url: `${devUrl}/user/login`,
@@ -30,7 +30,7 @@ export function registerApi(params: {
   password: string;
   nickname: string;
   email: string;
-}): Promise<axiosRes> {
+}): Promise<AxiosRes> {
   return request({
     method: "POST",
     url: `${devUrl}/user/register`,
@@ -38,7 +38,7 @@ export function registerApi(params: {
   });
 }
 
-export function testResfApi(params: { test: "aa" }): Promise<axiosRes> {
+export function testResfApi(params: { test: "aa" }): Promise<AxiosRes> {
   return request({
     method: "POST",
     url: `${devUrl}/testResf`,
