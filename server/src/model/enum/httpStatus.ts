@@ -6,13 +6,8 @@ import {
   NotFoundError,
   InternalServerError,
 } from './../class/exceptions';
-interface Test {
-  ctx: Context;
-  msg?: string;
-  data?: any;
-}
 
-export const SUCCESS = async ({ ctx, msg = 'success', data }: Test) => {
+export const SUCCESS = async (ctx: Context, data: any, msg = 'success') => {
   new SuccessModel(200, msg, data).success(ctx);
 };
 

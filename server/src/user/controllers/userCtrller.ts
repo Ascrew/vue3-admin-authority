@@ -1,14 +1,14 @@
-import { NotFound, SUCCESS, TOKEN_INVALID, USER_NOT_LOGIN } from './../../model/enum/httpStatus';
 import { getRepository } from 'typeorm';
 import { Context } from 'koa';
 import * as argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
-
-import { SuccessModel, UnauthorizedException } from '../../model/class/exceptions';
 import { JWT_SECRET } from '../../middlewares/constants';
+
 import { User } from '../entity/userEntity';
 import { Result } from '../../middlewares/restful';
 import { UserInterface } from '../../model/index';
+import { SuccessModel, UnauthorizedException } from '../../model/class/exceptions';
+import { HttpStatusCode } from '../../model';
 
 export default class UserController {
   // 用户登录
@@ -62,6 +62,6 @@ export default class UserController {
   public static async testResf(ctx: Context) {
     console.log(ctx.request.body);
     let data = [{ name: 'zhangyu', age: 24 }];
-    await SUCCESS({ ctx, data });
+    await HttpStatusCode.PARAM_NOT_VALID(ctx);
   }
 }

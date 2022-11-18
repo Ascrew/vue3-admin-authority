@@ -6,6 +6,7 @@ import 'reflect-metadata'
 
 import { protectRouter, unprotectedRouter } from './router/router'
 import { logger } from './middlewares/logger'
+import { errorCatch } from './middlewares/error'
 
 import jwt from 'koa-jwt'
 import { JWT_SECRET } from './middlewares/constants'
@@ -14,6 +15,8 @@ createConnection()
   .then(() => {
     // 初始化 Koa 应用实例
     const app = new Koa()
+
+    app.use(errorCatch);
 
     // 注册中间件
     app.use(logger()) // 日志记录

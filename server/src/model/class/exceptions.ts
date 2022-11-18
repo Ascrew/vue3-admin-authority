@@ -44,6 +44,7 @@ export class BaseModel {
   statusCode: number;
   code: number;
   msg: string;
+  message? : string;
 
   constructor() {
   }
