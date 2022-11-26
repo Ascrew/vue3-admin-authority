@@ -4,7 +4,6 @@ import {
   Router,
   RouteRecordRaw,
 } from "vue-router";
-import Home from "../views/Home.vue";
 import Layout from "@/layout/index.vue";
 
 export const constantRoutes: RouteRecordRaw[] = [
@@ -75,10 +74,10 @@ export const constantRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/nested/menu1/index.vue"),
         redirect: "/nested/menu1/menu1-1",
         name: "Menu1",
-        meta: { title: "menu1" },
+        meta: { title: "menu1", icon: "s-tools" },
         children: [
           {
-            path: "menu1-1",
+            path: "/menu1-1",
             component: () => import("@/views/nested/menu1/menu1-1/index.vue"),
             name: "Menu1-1",
             meta: { title: "menu1-1" },
@@ -146,6 +145,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     meta: { hidden: true },
   },
 ];
+
 export const asyncRoutes: RouteRecordRaw[] = [];
 
 const router: Router = createRouter({
