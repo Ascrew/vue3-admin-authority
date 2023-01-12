@@ -1,25 +1,23 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm'
+import { Role } from './roleEntity';
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn({ name: 'id' })
-  userId: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  @Column({ name: 'username' })
+  @Column()
   username: string;
 
-  @Column({ name: 'nickname' })
+  @Column()
   nickname: string;
 
-  @Column({ name: 'password', select: false })
+  @Column({ select: false })
   password: string;
 
-  @Column({ name: 'email' })
+  @Column()
   email: string;
 
-  @Column({ name: 'is_admin', default: false })
-  isAdmin: boolean;
-
-  @Column({ name: 'is_show', default: false })
-  isShow: boolean;
+  @ManyToMany(type => Role, role => role.users)
+  roles: Role[];
 }

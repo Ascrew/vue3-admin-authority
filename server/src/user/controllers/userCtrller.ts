@@ -7,7 +7,7 @@ import { JWT_SECRET } from '../../middlewares/constants';
 import { User } from '../entity/userEntity';
 import { Result } from '../../middlewares/restful';
 import { UserInterface } from '../../model/index';
-import { SuccessModel, UnauthorizedException } from '../../model/class/exceptions';
+import { UnauthorizedException } from '../../model/class/exceptions';
 import { HttpStatusCode } from '../../model';
 
 export default class UserController {
@@ -26,11 +26,11 @@ export default class UserController {
       ctx.body = { message: '用户名不存在' };
     } else if (await argon2.verify(user.password, body.password)) {
       ctx.status = 200;
-      ctx.body = { token: jwt.sign({ id: user.userId }, JWT_SECRET) };
+      ctx.body = { token: jwt.sign({ id: user.id }, JWT_SECRET) };
       ctx.body = new Result(
         0,
         {
-          token: jwt.sign({ id: (user as User).userId }, JWT_SECRET),
+          token: jwt.sign({ id: (user as User).id }, JWT_SECRET),
         },
         '更新成功',
       );
